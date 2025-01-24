@@ -104,4 +104,8 @@ export default StyleSheet.create({
     textAlign: "center",
     marginTop: 20,
   },
+  favoriteButton: {
+    marginLeft: "auto",
+    padding: 8,
+  },
 });

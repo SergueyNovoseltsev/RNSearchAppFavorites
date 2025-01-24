@@ -7,10 +7,20 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          headerTitle: "Accueil",
+          headerTitle: "Home",
           tabBarLabel: "Home",
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="home" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="favoritesScreen"
+        options={{
+          headerTitle: "Favorites Characters",
+          tabBarLabel: "Favorites",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name="star" color={color} />
           ),
         }}
       />

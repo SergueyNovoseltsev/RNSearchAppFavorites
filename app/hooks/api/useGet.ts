@@ -50,3 +50,7 @@ export function useGetEpisodeList(ids?: string) {
 export function useGetLocation(id?: string) {
   return useGetApiData<Location>("location", id);
 }
+
+export function useGetCharacterByIds(ids: string) {
+  return useGetApiData<Character[]>("character", ids);
+}

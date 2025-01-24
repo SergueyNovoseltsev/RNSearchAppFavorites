@@ -76,7 +76,7 @@ export default function CharacterDetailScreen() {
                 Species: {characterDetailData.species}
               </Text>
               <Text style={styles.detailText}>
-                Origin: {characterDetailData?.origin.name}
+                Origin: {characterDetailData?.origin?.name}
               </Text>
             </View>
           </View>
