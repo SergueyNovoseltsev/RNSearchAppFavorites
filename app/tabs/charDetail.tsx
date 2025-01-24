@@ -12,9 +12,9 @@ import {
   useGetCharacterDetail,
   useGetEpisodeList,
   useGetLocation,
-} from "./hooks/api/useGet";
+} from "../hooks/api/useGet";
 
-export default function Details() {
+export default function CharacterDetailScreen() {
   const props = useLocalSearchParams();
 
   const {

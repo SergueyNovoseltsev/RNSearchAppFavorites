@@ -1,14 +1,19 @@
-import { Stack } from "expo-router";
+import { Stack, useRouter, useSegments } from "expo-router";
+import { useEffect } from "react";
 
 export default function RootLayout() {
+  const router = useRouter();
+  const segments = useSegments();
+
+  useEffect(() => {
+    if (segments.length === 1) {
+      router.replace("/tabs");
+    }
+  }, [segments]);
+
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="charDetail"
-        options={{ headerTitle: "Character Detail" }}
-      />
-      <Stack.Screen name="+not-found" options={{ headerShown: false }} />
+    <Stack initialRouteName="tabs">
+      <Stack.Screen name="tabs" options={{ headerShown: false }} />
     </Stack>
   );
 }

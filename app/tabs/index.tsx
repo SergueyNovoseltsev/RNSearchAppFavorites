@@ -10,21 +10,21 @@ import {
 } from "react-native";
 import TextField from "react-native-ui-lib/src/components/textField";
 import Image from "react-native-ui-lib/src/components/image";
-import { useGetCharList } from "./hooks/api/useGet";
+import { useGetCharList } from "../hooks/api/useGet";
 import {
   Character,
   Gender,
   genderArr,
   Status,
   statusArr,
-} from "./models/character";
+} from "../models/character";
 import Picker from "react-native-ui-lib/src/components/picker";
 import { useRouter } from "expo-router";
 import Button from "react-native-ui-lib/src/components/button";
 
 const { width } = Dimensions.get("window");
 
-export default function Index() {
+export default function HomeScreen() {
   const [name, setName] = useState<string>();
   const [status, setStatus] = useState<Status>();
   const [species, setSpecies] = useState<string>();
@@ -163,7 +163,7 @@ export default function Index() {
               <TouchableOpacity
                 onPress={() =>
                   router.push({
-                    pathname: "/charDetail",
+                    pathname: "/tabs/charDetail",
                     params: { id: item.id },
                   })
                 }
@@ -196,6 +196,7 @@ export default function Index() {
               minIndexForVisible: 0,
             }}
           />
+          e
         </>
       )}
     </View>
