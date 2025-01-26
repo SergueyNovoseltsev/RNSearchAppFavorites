@@ -17,10 +17,11 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="favoritesScreen"
         options={{
+          tabBarActiveTintColor: "red",
           headerTitle: "Favorites Characters",
           tabBarLabel: "Favorites",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="star" color={color} />
+            <FontAwesome size={28} name="heart" color={color} />
           ),
         }}
       />

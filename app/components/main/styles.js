@@ -107,5 +107,14 @@ export default StyleSheet.create({
   favoriteButton: {
     marginLeft: "auto",
     padding: 8,
+    margin: 10,
+    zIndex: 999999,
+  },
+  favoriteButtonContainer: {
+    position: "absolute",
+    right: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 99999,
   },
 });

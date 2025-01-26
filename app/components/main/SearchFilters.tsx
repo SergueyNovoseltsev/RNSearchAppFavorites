@@ -91,7 +91,7 @@ export default function SearchFilters({
       </View>
       <Button
         style={styles.searchButton}
-        label="Rechercher"
+        label="Search"
         onPress={handleSearch}
         disabled={isLoading}
       />

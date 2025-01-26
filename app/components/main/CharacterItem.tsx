@@ -6,18 +6,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/configureStore";
 import { addFavorite, removeFavorite } from "@/store/favoritesSlice";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Animated, {
+  useSharedValue,
+  withSequence,
+  withTiming,
+  useAnimatedStyle,
+} from "react-native-reanimated";
 
 interface CharacterItemProps {
   item: Character;
   onPress: () => void;
+  style: {
+    opacity: number;
+    transform: {
+      translateY: number;
+    }[];
+  };
 }
 
-export default function CharacterItem({ item, onPress }: CharacterItemProps) {
+export default function CharacterItem({
+  item,
+  onPress,
+  style,
+}: CharacterItemProps) {
   const dispatch = useDispatch();
   const favorites = useSelector((state: RootState) => state.favorites.items);
   const isFavorite = favorites.some((favorite) => favorite === item.id);
-  console.log(favorites);
+
+  const scale = useSharedValue(1);
+
   const handleFavoriteToggle = () => {
+    scale.value = withSequence(
+      withTiming(1.4, { duration: 150 }),
+      withTiming(1, { duration: 150 })
+    );
+
     if (isFavorite) {
       dispatch(removeFavorite(item.id));
     } else {
@@ -25,24 +48,32 @@ export default function CharacterItem({ item, onPress }: CharacterItemProps) {
     }
   };
 
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} style={style}>
       <View style={styles.item}>
         <View style={styles.itemHeader}>
           <Image source={{ uri: item.image }} style={styles.itemImage} />
           <Text style={styles.itemName}>{item.name}</Text>
         </View>
         <View>
-          <TouchableOpacity
-            onPress={handleFavoriteToggle}
-            style={styles.favoriteButton}
-          >
-            <FontAwesome
-              size={28}
-              name="star"
-              color={isFavorite ? "yellow" : "gray"}
-            />
-          </TouchableOpacity>
+          <View style={styles.favoriteButtonContainer}>
+            <Animated.View style={[animatedStyle]}>
+              <TouchableOpacity
+                onPress={handleFavoriteToggle}
+                style={styles.favoriteButton}
+              >
+                <FontAwesome
+                  size={28}
+                  name="heart"
+                  color={isFavorite ? "red" : "gray"}
+                />
+              </TouchableOpacity>
+            </Animated.View>
+          </View>
         </View>
 
         <View style={styles.itemDetails}>
