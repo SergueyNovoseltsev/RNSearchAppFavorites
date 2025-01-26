@@ -16,7 +16,7 @@ import Animated, {
 interface CharacterItemProps {
   item: Character;
   onPress: () => void;
-  style: {
+  style?: {
     opacity: number;
     transform: {
       translateY: number;

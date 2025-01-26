@@ -77,6 +77,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 10,
+    width: 100,
   },
   itemImage: {
     width: width > 600 ? 100 : 60,
@@ -106,15 +107,13 @@ export default StyleSheet.create({
   },
   favoriteButton: {
     marginLeft: "auto",
-    padding: 8,
-    margin: 10,
+    marginRight: 10,
     zIndex: 999999,
   },
   favoriteButtonContainer: {
-    position: "absolute",
-    right: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 99999,
+    zIndex: 9999999,
+    alignSelf: "flex-end",
+    top: 0,
+    right: 0,
   },
 });

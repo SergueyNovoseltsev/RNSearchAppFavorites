@@ -18,17 +18,18 @@ export default function FavoritesScreen() {
   } = useGetCharacterByIds(favorites.toString());
 
   useEffect(() => {
+    console.log("TEST", charList);
     fetchCharacterByIds();
   }, [isFocused]);
 
   return (
     <View style={styles.container}>
-      {favorites.length === 0 ? (
+      {favorites.length === 0 || charList === null ? (
         <Text style={styles.noResultsText}>No favorites added yet.</Text>
       ) : (
         <FlatList
-          data={charList}
-          keyExtractor={(item) => item.id.toString()}
+          data={Array.isArray(charList) ? charList : [charList]}
+          keyExtractor={(item) => item?.id?.toString()}
           renderItem={({ item }) => (
             <CharacterItem
               item={item}
